@@ -1,3 +1,6 @@
 1. create an img folder in src/img
 2. Install react, and  redux devtools on chrome.
 3. add font awesome, bootstrap, bootstrap js cdns
+4. Add Navbar, landing and footer components
+5. In the App.js Add react router as Browser router, also add Router all from react-router-dom
+6.
