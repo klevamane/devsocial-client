@@ -1,0 +1,3 @@
+1. create an img folder in src/img
+2. Install react, and  redux devtools on chrome.
+3. add font awesome, bootstrap, bootstrap js cdns
