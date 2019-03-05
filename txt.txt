@@ -1,0 +1,20 @@
+1. create an img folder in src/img
+2. Install react, and  redux devtools on chrome.
+3. add font awesome, bootstrap, bootstrap js cdns
+4. Add Navbar, landing and footer components
+5. In the App.js Add react router as Browser router, also add Router all from react-router-dom
+6.To create component state; in a component class, add, the 
+    constructor() {
+        super();
+        this.state = {
+
+        }
+    }
+
+7. Add state to the register component, by linking the name and onChange event with the this.setState = {
+    
+}
+
+
+9. Add proxy in package.json
+    "proxy": "http://localhost:5000",
