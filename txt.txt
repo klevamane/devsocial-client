@@ -18,3 +18,24 @@
 
 9. Add proxy in package.json
     "proxy": "http://localhost:5000",
+10. npm install classnames - to implement conditional classnames
+    this will ensure that we can easily add classes / class to the form control
+    if a particular condition is met
+
+    eg
+    className={classnames("form-control form-control-lg", {
+                      'is-invalid': errors.name
+                    })} 
+
+    display "form-control form-control-lg" at all times , but add 'is-valid' to the 
+    className if and only if errors.name exist
+
+    this in this case will help us to add highlight to the input
+
+11. you can add noValidate to the formtag, to prevent the form from implementing any
+    HTML 5 validation.
+
+12. add {errors.confirmpwd && (<div className="invalid-feedback">{errors.confirmpwd}</div>)}
+        use for different controll names eg, password, email etc.
+        this ensures that if there the error object contains error, it displays it
+        at the position this is placed
