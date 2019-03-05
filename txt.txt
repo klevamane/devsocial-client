@@ -39,3 +39,7 @@
         use for different controll names eg, password, email etc.
         this ensures that if there the error object contains error, it displays it
         at the position this is placed
+
+13. npm install redux, react-redux and redux-thunk
+    When an Ajax request is, we want to wait for that request and then dispatch to our reducer.
+    Redux-thunk essentially enables that to be done.
