@@ -4,8 +4,10 @@
 
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
+import errorsReducer from './errorsReducer';
 
 // add all reducers here to combine them into one to be used
 export default combineReducers({
-    authenticate: authReducer
-})
+    auth: authReducer,
+    errors: errorsReducer
+});

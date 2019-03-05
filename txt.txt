@@ -43,3 +43,97 @@
 13. npm install redux, react-redux and redux-thunk
     When an Ajax request is, we want to wait for that request and then dispatch to our reducer.
     Redux-thunk essentially enables that to be done.
+
+14. Add the actions folder
+15. The flow
+   **** The action is created, implemented with a type
+        eg 
+            export const theAction = (param) => {
+                type: TYPE_OF_ACTION,
+                payload: param
+            }
+
+    **** The reducer takes the action and dispatches it
+        const initialState = {
+            isAuthenticated: false,
+            user: {}
+        }
+        const actionReducer = (state= initialState, action) => {
+            switch(action) {
+                case TYPE_OF_ACTION:
+                return {
+                    ...state, // inorder not to mutate the state
+                    user: action.payload
+                }
+                default:
+                    return state;
+            }
+        }
+
+    **** 
+
+    container: generally is a react component that works with redux
+
+    in the component eg Register component
+    import connect from react-redux
+    import the action and map it with connect and the add the Component in connect
+
+16.
+
+     - add auth reducer
+    - add combine reducer to combine all reducers in root reducer
+    - create the redux store
+    - add root reducer to store
+    - add Provider
+    - add the store to the provider
+    - wrap the App return body with the provider
+    - add redux chrome dev tools with compose in the store
+
+17.
+    - add connect to Register component
+    - add registerUser action to Register component
+    - add mapStateToProps to Register component
+
+18. Create the login action using axios
+
+19.
+    in order to implement routing within a component to another component
+    using an action,
+    we would make use of "withRouter" from react-router-dom
+    - in connect at the bottom of the component, wrap it with withRouter
+    eg
+    export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+
+20 Add the authorization token for every request made, provided the user has been isAuthenticated
+
+    // helper
+    export const setAuthToken = (token) => {
+    if(token) {
+        // Apply the token for every request
+        axios.defaults.headers.common['Authorization'] = token
+    }
+    else {
+        delete axios.defaults.headers.common['Authorization']; 
+    }
+}
+
+21. Set the current user by
+        setCurrentUser action,
+
+22. **********************
+    WHEN ERROR ARE RETURNED AS HTML
+    CHECK THE ROUTE
+
+23. Implementing this ensures that the logged in user remains logged or is seen as
+    authenticated, regardless of page refresh or transitioning to another page/route
+
+    // check for token in local storage
+if (localStorage.jwtDevSocial) {
+  // set auth token header
+  setTokenForEveryRequest(localStorage.jwtDevSocial);
+  // Decode the token to obtain user details and token expiry
+  const decoded = jwt_decode(localStorage.jwtDevSocial)
+  // set current user with the decoded data
+  // note that the store can dispatch action also
+  store.dispatch(setCurrentUser(decoded));
+}

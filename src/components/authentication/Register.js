@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import { withRouter} from 'react-router-dom';
+
+import { registerUser } from '../../actions/authActions';
+
 
 class Register extends Component {
 
@@ -20,6 +25,12 @@ class Register extends Component {
         this.setState({ [e.target.name] : e.target.value  });
     }
 
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.errors) {
+        this.setState({ errors: nextProps.errors})
+      }
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -29,16 +40,15 @@ class Register extends Component {
             password: this.state.password,
             confirmpwd: this.state.confirmpwd
         };
-        axios.post('/api/v1/users/register', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => this.setState({errors: err.response.data}));
-        
-    
-
-
+        // this.props.history will allow us to be able to implement
+        // redirect from within this action
+        // this also includes the implementation of withRouter in this component
+        this.props.registerUser(newUser, this.props.history);
     }
+
   render() {
-    const { errors } = this.state
+    const { errors } = this.state;
+    const { user } = this.props.auth;
 
     return (
         <div className="register">
@@ -112,4 +122,18 @@ class Register extends Component {
   }
 }
 
-export default Register;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+// connect redux with react
+// add the action and the component
+// also mapState to props
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
