@@ -7,5 +7,5 @@ import authReducer from './authReducer';
 
 // add all reducers here to combine them into one to be used
 export default combineReducers({
-    authenticate: authReducer
+    auth: authReducer
 })

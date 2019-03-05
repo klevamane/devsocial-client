@@ -43,3 +43,37 @@
 13. npm install redux, react-redux and redux-thunk
     When an Ajax request is, we want to wait for that request and then dispatch to our reducer.
     Redux-thunk essentially enables that to be done.
+
+14. Add the actions folder
+15. The flow
+   **** The action is created, implemented with a type
+        eg 
+            export const theAction = (param) => {
+                type: TYPE_OF_ACTION,
+                payload: param
+            }
+
+    **** The reducer takes the action and dispatches it
+        const initialState = {
+            isAuthenticated: false,
+            user: {}
+        }
+        const actionReducer = (state= initialState, action) => {
+            switch(action) {
+                case TYPE_OF_ACTION:
+                return {
+                    ...state, // inorder not to mutate the state
+                    user: action.payload
+                }
+                default:
+                    return state;
+            }
+        }
+
+    **** 
+
+    container: generally is a react component that works with redux
+
+    in the component eg Register component
+    import connect from react-redux
+    import the action and map it with connect and the add the Component in connect
