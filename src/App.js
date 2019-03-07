@@ -14,7 +14,7 @@ import Login from './components/authentication/Login';
 import { setTokenForEveryRequest } from './helpers/helpers';
 
 // actions
-import { setCurrentUser } from './actions/authActions';
+import { setCurrentUser, logout } from './actions/authActions';
 //store
 import store from './store';
 
@@ -27,7 +27,24 @@ if (localStorage.jwtDevSocial) {
   // set current user with the decoded data
   // note that the store can dispatch action also
   store.dispatch(setCurrentUser(decoded));
+
+
+  // Authomatically log the user out if the token has expired
+  // note the time is in ms
+const currentTime = Date.now() / 1000;
+if (currentTime > decoded.exp) {
+  // log the user out
+  store.dispatch(logout);
+
+ // TODO: Clear current profile
+
+ // redirect to the login page
+ window.location.href = '/login';
 }
+
+}
+
+
 
 class App extends Component {
   render() {

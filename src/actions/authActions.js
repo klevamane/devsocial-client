@@ -38,7 +38,10 @@ export const loginUser = (userData) => dispatch => {
         setTokenForEveryRequest(token);
 
         // decode the token to extract the user data
-        const decodedTokenData = jwt_decode(token);
+        const decodedTokenData =  jwt_decode(token);
+        // const _data = decodedTokenData.data;
+        // delete decodedTokenData.data
+        // decodedTokenData = ...decodedTokenData
         
         //Set the current user
         dispatch(setCurrentUser(decodedTokenData));
@@ -49,3 +52,14 @@ export const loginUser = (userData) => dispatch => {
         payload: err.response.data
     }))
 };
+
+export const logout = () => dispatch => {
+
+    // remove the token from localstorage
+    localStorage.removeItem('jwtDevSocial');
+    // Remove the autoken from subsequent requests
+    setTokenForEveryRequest(false);
+    // Set the current user to {} will will also set isAuthenticated in the
+    // authReducer to false
+    dispatch(setCurrentUser({}));
+}

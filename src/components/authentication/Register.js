@@ -21,14 +21,22 @@ class Register extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
-    onChange(e) {
-        this.setState({ [e.target.name] : e.target.value  });
+    
+
+    // redirect a login user to the dashboard, upon reaching the login route (component)
+    componentDidMount() {
+      if(this.props.auth.isAuthenticated)
+        this.props.history.push('/dashboard');
     }
 
     componentWillReceiveProps(nextProps) {
       if (nextProps.errors) {
         this.setState({ errors: nextProps.errors})
       }
+    }
+
+    onChange(e) {
+      this.setState({ [e.target.name] : e.target.value  });
     }
 
     onSubmit(e) {
