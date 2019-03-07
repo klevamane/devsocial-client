@@ -6,6 +6,9 @@ import { withRouter} from 'react-router-dom';
 
 import { registerUser } from '../../actions/authActions';
 
+// custom form controls
+import TextBoxGroup from '../formcontrol/TextBox';
+
 
 class Register extends Component {
 
@@ -67,59 +70,42 @@ class Register extends Component {
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your DevConnector account</p>
               <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input type="text" 
-                    className={classnames("form-control form-control-lg", {
-                      'is-invalid': errors.name
-                    })}  
-                    placeholder="Name" 
-                    name="name"
-                    // required
-                    value={this.state.name}
-                    onChange={this.onChange}
-                   />
-                   {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-                </div>
 
-                <div className="form-group">
-                  <input type="email" 
-                    className={classnames("form-control form-control-lg", {
-                      'is-invalid': errors.email
-                    })} 
-                    placeholder="Email Address" 
-                    name="email" 
-                    value = {this.state.email}
-                    onChange={this.onChange}
-                  />
-                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                  <small className="form-text text-muted">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
-                </div>
+                <TextBoxGroup
+                  name="name"
+                  type="text"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  placeholder="Name"
+                  error={errors.name}
+                />
 
-                <div className="form-group">
-                  <input type="password" 
-                    className={classnames("form-control form-control-lg", {
-                      'is-invalid': errors.password
-                    })} 
-                    placeholder="Password" 
-                    name="password"
-                    value={this.state.password} 
-                    onChange={this.onChange}
-                  />
-                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                </div>
+                <TextBoxGroup
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  placeholder="email@address"
+                  error={errors.email}
+                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+                />
 
-                <div className="form-group">
-                  <input type="password" 
-                  className={classnames("form-control form-control-lg", {
-                    'is-invalid': errors.confirmpwd
-                  })} 
-                  placeholder="Confirm Password" 
+                <TextBoxGroup
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  placeholder="password"
+                  error={errors.password}
+                />
+                <TextBoxGroup
                   name="confirmpwd"
+                  type="password"
                   value={this.state.confirmpwd}
                   onChange={this.onChange}
-                  />
-                  {errors.confirmpwd && (<div className="invalid-feedback">{errors.confirmpwd}</div>)}
-                </div>
+                  placeholder="Conform Password"
+                  error={errors.confirmpwd}
+                />
 
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
