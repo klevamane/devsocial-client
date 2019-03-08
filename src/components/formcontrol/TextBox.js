@@ -28,7 +28,7 @@ const TextBoxGroup = ({ name, value, placeholder, info, type, onChange, disabled
 TextBoxGroup.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
-    lable: PropTypes.string.isRequired,
+    label: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     info: PropTypes.string,
     type: PropTypes.string.isRequired,

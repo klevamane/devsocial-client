@@ -7,7 +7,8 @@ import axios from 'axios';
 export const setTokenForEveryRequest = (token) => {
     if(token) {
         // Apply the token for every request
-        axios.defaults.headers.common['Authorization'] = token
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        
     }
     else {
         delete axios.defaults.headers.common['Authorization']; 

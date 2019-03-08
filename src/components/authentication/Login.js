@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import { isEmpty_ } from '../../helpers/helpers';
 // action
 import { loginUser } from '../../actions/authActions';
 
@@ -34,7 +32,7 @@ class Login extends Component {
       // check if the reducer property is set to true
       // when login occurs, if so redirect to the dashboard
         if(nextProps.auth.isAuthenticated) {
-          this.props.history.push('/dashaboard');
+          this.props.history.push('/dashboard');
         }
         if(nextProps.errors) {
           this.setState({ errors: nextProps.errors })
