@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Custom Form Controls
+import SelectListGroup from '../../components/formcontrol/Select';
+import TextArea from '../../components/formcontrol/TextArea';
+import TextBox from '../../components/formcontrol/TextBox';
+import IconTextBox from '../../components/formcontrol/TextBoxWithIcon';
+
 class CreateProfile extends Component {
     constructor(props) {
         super(props);
