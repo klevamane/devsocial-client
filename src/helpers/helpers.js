@@ -29,3 +29,12 @@ export const isEmpty_ = (value) => {
       return true;
     }
   };
+
+export const profileStatusOptions = [
+    { label: '* Select Professional Status',  value: 0},
+    { label: 'Developer',  value: 'Developer'},
+    { label: 'Intern',  value: 'Intern'},
+    { label: 'Student',  value: 'Student'},
+    { label: 'Senior Software Developer',  value: 'Senior Software Developer'},
+    { label: 'Technical Team Lead',  value: 'Technical Team Lead'},
+];

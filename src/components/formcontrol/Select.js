@@ -9,14 +9,14 @@ const SelectListGroup = ({ name, value, info, type, onChange, options, error }) 
         css += 'is-invalid';
 
     const selectOptions = options.map(option => (
-        <option key={option.lavel} value={option.value}>
+        <option key={option.label} value={option.value}>
             {option.label}
         </option>
     ));
 
   return (
       <div className="form-group">
-          <select className={css}>
+          <select className={css} onChange={onChange} error={error} name={name} value={value}>
               {selectOptions}
           </select>
 

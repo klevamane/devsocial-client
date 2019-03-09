@@ -26,3 +26,20 @@ export const getCurrentUserProfile = () => dispatch => {
         }))
 
 }
+/**
+ * @desc This action creates the user profile
+ * and redirects to the dashboard upon successful creation
+ * else it dispatches the error encounted so it can be accessed in the front end component
+ * @param  profileData : It takes the user new profile data
+ * @param  history : This is used tp redirect to another route (component) as implemented in the App.js
+ */
+export const createNewProfile = (profileData, history) => dispatch => {
+    console.log('I reached here2');
+    axios
+        .post('/api/v1/profile', profileData)
+        .then(res => history.push('/dashboard'))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+}

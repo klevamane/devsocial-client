@@ -34,7 +34,7 @@ class Dashboard extends Component {
             // Checks to see if the logged in user has a profile data
             if (Object.keys(profile).length > 0) {
                 content = (
-                         <h1> This user has profile data </h1>
+                         <h1> This user {user.name} has profile data </h1>
                      )
             } 
             else {

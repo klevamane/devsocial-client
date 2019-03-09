@@ -45,4 +45,4 @@ IconTextBox.defaultProps = {
     type: 'text'
 }
 
-export default InputGroup;
+export default IconTextBox;
