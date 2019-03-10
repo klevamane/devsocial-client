@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS } from './types';
+import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS, SET_CURRENT_USER } from './types';
 
 // axios
 import axios from 'axios';
@@ -34,7 +34,6 @@ export const getCurrentUserProfile = () => dispatch => {
  * @param  history : This is used tp redirect to another route (component) as implemented in the App.js
  */
 export const createNewProfile = (profileData, history) => dispatch => {
-    console.log('I reached here2');
     axios
         .post('/api/v1/profile', profileData)
         .then(res => history.push('/dashboard'))
@@ -42,4 +41,22 @@ export const createNewProfile = (profileData, history) => dispatch => {
             type: GET_ERRORS,
             payload: err.response.data
         }));
+}
+
+
+export const deleteAccount = () => dispatch => {
+   
+        dispatch(setProfileLoading());
+        axios
+        .delete('/api/v1/profile')
+        .then(res => dispatch({
+            type: SET_CURRENT_USER, // setting the current user to {} ensures that the user is empty which triggers rerouting to /login
+            payload: {} 
+        }))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+    
+    
 }
