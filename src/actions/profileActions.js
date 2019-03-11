@@ -53,6 +53,15 @@ export const  addProfileExperience = (profileExperienceData, history) => dispatc
         }));
 }
 
+export const addProfileEducation = (profileEducationData, history) => dispatch => {
+    axios
+        .post('/api/v1/profile/education', profileEducationData)
+        .then(res => history.push('/dashboard'))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+}
 
 export const deleteAccount = () => dispatch => {
    
