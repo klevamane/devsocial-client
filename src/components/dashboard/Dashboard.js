@@ -4,19 +4,23 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Actions
-import { getCurrentUserProfile, deleteAccount } from '../../actions/profileActions'
+import { getCurrentUserProfile, deleteAccount, deleteProfileExperience } from '../../actions/profileActions'
 
 // component
 import Loader from '../Loader';
 import ProfileSections from './ProfileSections'
+import ExperienceTable from './ExperienceTable';
+
 
 class Dashboard extends Component {
     constructor() {
         super();
 
         this.state = {
-            buttonloading: false
+            buttonloading: false,
+            xpid: '' 
         }
+        this.onDeleteExperience = this.onDeleteExperience.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +33,21 @@ class Dashboard extends Component {
         this.props.deleteAccount();
         }
     }
+
+    onDeleteExperience(e) {
+        e.preventDefault();
+        this.setState({ xpid: e.target.value });
+
+        this.props.deleteProfileExperience(e.target.value, this.props.history);
+
+        // this.setState({[e.target.name]: e.target.value}, function () {
+        //     console.log(this.state.xpid);
+        // });
+        // console.log('%%%%%%%%%%value - ', e.target.value);
+        // console.log('%%%%%%%%%%value n- ', e.target.name);
+        // console.log('%%%%%%%%%%state ', this.state);
+        
+    }
     render(){
         let { loading, profile} = this.props.profile;
         const { user } = this.props.auth;
@@ -39,6 +58,7 @@ class Dashboard extends Component {
 
         const { buttonloading } = this.state
         let name;
+        let ExperienceShow = '';
         if (user) {
             name = user.name;
         }
@@ -54,6 +74,8 @@ class Dashboard extends Component {
                 content = (
                          <h4> Welcome <Link to={`/profile/${profile.handle}`}> {user.name} </Link></h4>
                      )
+                  ExperienceShow =  <ExperienceTable experience={profile.experience} deleteExp={this.onDeleteExperience}/>
+                  
             } 
             else {
                 content = (
@@ -74,6 +96,9 @@ class Dashboard extends Component {
                         {content}
                         <div style={{ marginTop: '20px' }}>
                             <ProfileSections />
+                            
+                            {ExperienceShow}
+                            
                             {/* TODO: Experience and Educatin */}
                             <div style={{ marginBottom: '40px' }}>
                                 <button className="btn btn-danger" type="button"
@@ -105,4 +130,4 @@ const mapStateToProps = state => ({
     profile: state.profile,
     auth: state.auth
 });
-export default connect(mapStateToProps, { getCurrentUserProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentUserProfile, deleteAccount, deleteProfileExperience })(Dashboard);

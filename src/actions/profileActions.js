@@ -53,6 +53,19 @@ export const  addProfileExperience = (profileExperienceData, history) => dispatc
         }));
 }
 
+export const  deleteProfileExperience = (exp_id, history) => dispatch => {
+    axios
+        .delete(`/api/v1/profile/experience/${exp_id}`)
+        .then(res => dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        }))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+}
+
 export const addProfileEducation = (profileEducationData, history) => dispatch => {
     axios
         .post('/api/v1/profile/education', profileEducationData)
