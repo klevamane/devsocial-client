@@ -15,7 +15,8 @@ class Register extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            firstname: '',
+            lastname: '',
             email: '',
             password: '',
             confirmpwd: '',
@@ -46,7 +47,8 @@ class Register extends Component {
         e.preventDefault();
 
         const newUser = {
-            name: this.state.name,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
             email: this.state.email,
             password: this.state.password,
             confirmpwd: this.state.confirmpwd
@@ -63,7 +65,7 @@ class Register extends Component {
 
     return (
         <div className="register">
-        { user ? user.name : null}
+        { user ? user.firstname : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -72,12 +74,21 @@ class Register extends Component {
               <form onSubmit={this.onSubmit}>
 
                 <TextBoxGroup
-                  name="name"
+                  name="firstname"
                   type="text"
-                  value={this.state.name}
+                  value={this.state.firstname}
                   onChange={this.onChange}
-                  placeholder="Name"
-                  error={errors.name}
+                  placeholder="Firstname"
+                  error={errors.firstname}
+                />
+
+                <TextBoxGroup
+                  name="lastname"
+                  type="text"
+                  value={this.state.lastname}
+                  onChange={this.onChange}
+                  placeholder="Lastname"
+                  error={errors.lastname}
                 />
 
                 <TextBoxGroup

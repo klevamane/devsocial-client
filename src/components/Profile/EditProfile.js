@@ -71,7 +71,7 @@ class EditProfile extends Component {
             profile.youtube = isEmpty_(profile.social.youtube) ? '': profile.social.youtube;
 
             // Set the component state
-            console.log('**&&&&**&*&** status ', profile.status)
+            
             this.setState({
 
             handle: profile.handle,
@@ -222,9 +222,9 @@ class EditProfile extends Component {
 
                             <TextBox 
                                 placeholder = "Github username"
-                                name ="github"
-                                value={this.state.github}
-                                error = {errors.github}
+                                name ="githubusername"
+                                value={this.state.githubusername}
+                                error = {errors.githubusername}
                                 info = "Enter your github username to display 5 of your lates repositories"
                                 onChange={this.onChange}
                             />
@@ -247,7 +247,7 @@ class EditProfile extends Component {
                             </div>
                             {displaySocialInputs? socialMediaInputs : ''}
                             
-                            <input type="submit" className="btn btn-info btn-block mt-4"  value="Create Profile"/>
+                            <input type="submit" className="btn btn-info btn-block mt-4"  value="Edit Profile"/>
                         </form>
                     </div>
                 </div>

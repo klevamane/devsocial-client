@@ -1,12 +1,13 @@
 import React from 'react'
+import Moment from 'react-moment';
 
 const ExperienceTable = ({experience, deleteExp}) => {
   const experiences =   experience.map(experience => 
-        <tr>
+        <tr key={experience._id}>
             <td>{experience.company}</td>
             <td>{experience.title}</td>
             <td>
-                02-03-2009 - 01-02-2014
+            <Moment format="DD/MM/YYY">{experience.from}</Moment> - <Moment format="DD/MM/YYY">{experience.to}</Moment> 
                   </td>
             <td>
                 <button className="btn btn-danger" name="xpid" value={experience._id} onClick={deleteExp}>

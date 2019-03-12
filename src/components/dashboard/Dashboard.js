@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Actions
-import { getCurrentUserProfile, deleteAccount, deleteProfileExperience } from '../../actions/profileActions'
+import { getCurrentUserProfile, deleteAccount, deleteProfileExperience, deleteProfileEducation } from '../../actions/profileActions'
 
 // component
 import Loader from '../Loader';
 import ProfileSections from './ProfileSections'
 import ExperienceTable from './ExperienceTable';
+import EducationTable from './EducationTable';
 
 
 class Dashboard extends Component {
@@ -21,6 +22,7 @@ class Dashboard extends Component {
             xpid: '' 
         }
         this.onDeleteExperience = this.onDeleteExperience.bind(this);
+        this.onDeleteEducation = this.onDeleteEducation.bind(this);
     }
 
     componentDidMount() {
@@ -39,13 +41,14 @@ class Dashboard extends Component {
         this.setState({ xpid: e.target.value });
 
         this.props.deleteProfileExperience(e.target.value, this.props.history);
+        
+    }
 
-        // this.setState({[e.target.name]: e.target.value}, function () {
-        //     console.log(this.state.xpid);
-        // });
-        // console.log('%%%%%%%%%%value - ', e.target.value);
-        // console.log('%%%%%%%%%%value n- ', e.target.name);
-        // console.log('%%%%%%%%%%state ', this.state);
+    onDeleteEducation(e) {
+        e.preventDefault();
+        this.setState({ xpid: e.target.value });
+
+        this.props.deleteProfileEducation(e.target.value, this.props.history);
         
     }
     render(){
@@ -59,8 +62,9 @@ class Dashboard extends Component {
         const { buttonloading } = this.state
         let name;
         let ExperienceShow = '';
+        let EducationShow = '';
         if (user) {
-            name = user.name;
+            name = user.firstname;
         }
         let content;
         if( profile === null || loading) {
@@ -72,9 +76,10 @@ class Dashboard extends Component {
             // Checks to see if the logged in user has a profile data
             if (Object.keys(profile).length > 0) {
                 content = (
-                         <h4> Welcome <Link to={`/profile/${profile.handle}`}> {user.name} </Link></h4>
+                         <h4> Welcome <Link to={`/profile/${profile.handle}`}> {user.firstname} </Link></h4>
                      )
                   ExperienceShow =  <ExperienceTable experience={profile.experience} deleteExp={this.onDeleteExperience}/>
+                  EducationShow =  <EducationTable education={profile.education} deleteEdu={this.onDeleteEducation}/>
                   
             } 
             else {
@@ -98,6 +103,7 @@ class Dashboard extends Component {
                             <ProfileSections />
                             
                             {ExperienceShow}
+                            {EducationShow}
                             
                             {/* TODO: Experience and Educatin */}
                             <div style={{ marginBottom: '40px' }}>
@@ -130,4 +136,4 @@ const mapStateToProps = state => ({
     profile: state.profile,
     auth: state.auth
 });
-export default connect(mapStateToProps, { getCurrentUserProfile, deleteAccount, deleteProfileExperience })(Dashboard);
+export default connect(mapStateToProps, { getCurrentUserProfile, deleteAccount, deleteProfileExperience, deleteProfileEducation })(Dashboard);

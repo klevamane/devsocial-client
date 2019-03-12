@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS, SET_CURRENT_USER } from './types';
+import { GET_PROFILE, GET_PROFILES, PROFILE_LOADING, GET_ERRORS, SET_CURRENT_USER } from './types';
 
 // axios
 import axios from 'axios';
@@ -76,6 +76,19 @@ export const addProfileEducation = (profileEducationData, history) => dispatch =
         }));
 }
 
+export const  deleteProfileEducation = (edu_id, history) => dispatch => {
+    axios
+        .delete(`/api/v1/profile/experience/${edu_id}`)
+        .then(res => dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        }))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }));
+}
+
 export const deleteAccount = () => dispatch => {
    
         dispatch(setProfileLoading());
@@ -91,4 +104,21 @@ export const deleteAccount = () => dispatch => {
         }));
     
     
+}
+
+export const getAllProfiles = () => dispatch => {
+    dispatch(setProfileLoading());
+    axios
+        .get('/api/v1/profile/all')
+        .then(res =>  dispatch({
+                type: GET_PROFILES,
+                payload: res.data
+            })
+         )
+        // .catch(err => dispatch({
+        //     type: GET_PROFILES,
+        //     // if there is no profile instead of return an error just return an empty object,
+        //     // remember that a user may /will not have a profile / unpon regisr, that is not necessarily an error
+        //     payload: {} 
+        // }))
 }
