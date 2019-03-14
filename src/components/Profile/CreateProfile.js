@@ -179,6 +179,15 @@ class CreateProfile extends Component {
                                 onChange={this.onChange}
                             />
 
+                            <TextBox 
+                                placeholder = "Website"
+                                name ="website"
+                                value={this.state.website}
+                                error = {errors.website}
+                                info = "Website URL must begin with http:// or https://"
+                                onChange={this.onChange}
+                            />
+
                             <TextArea 
                                 placeholder = "Bio"
                                 name ="bio"

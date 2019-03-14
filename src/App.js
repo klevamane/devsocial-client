@@ -15,6 +15,7 @@ import CreateProfile from './components/Profile/CreateProfile';
 import EditProfile from './components/Profile/EditProfile';
 import Experience from './components/Profile/experience/Experience';
 import Profiles from './components/Profile/public/Profiles';
+import SingleProfile from './components/Profile/public/SingleProfile/SingleProfile';
 
 
 // helper
@@ -86,6 +87,7 @@ class App extends Component {
               <PrivateRoute exact path="/add-education" component={Education}></PrivateRoute>
               </Switch>
               <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/handle/:handle" component={SingleProfile} />
             </div>
             <Footer />
           </div>
