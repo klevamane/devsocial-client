@@ -27,25 +27,25 @@ const DeveloperCard = ({profileData}) => {
                     </a>)}
 
                     { isEmpty_(twitter) ? null : 
-                    ( <a className="text-white p-2" blank="new" href={`twitter.com/${twitter}`}>
+                    ( <a className="text-white p-2" href={twitter} target="_blank">
                       <i className="fab fa-twitter fa-2x"></i>
                       </a>) }
 
                     { isEmpty_(facebook) ? null : 
-                    (<a className="text-white p-2" href={`facebook.com/${facebook}`}>
+                    (<a className="text-white p-2" href={facebook} target="_blank">
                       <i className="fab fa-facebook fa-2x"></i>
                       </a>) }
                     { isEmpty_(linkedin) ? null :
-                    (<a className="text-white p-2" href={`linkedin.com/${linkedin}`}>
+                    (<a className="text-white p-2" href={linkedin} target="_blank">
                       <i className="fab fa-linkedin fa-2x"></i>
                       </a>) }
                       { isEmpty_(instagram) ? null : 
-                    (<a className="text-white p-2" href={`instagram.com/${instagram}`}>
+                    (<a className="text-white p-2" href={instagram} target="_blank">
                       <i className="fab fa-instagram fa-2x"></i>
                       </a>) }
 
                       { isEmpty_(youtube) ? null : 
-                    (<a className="text-white p-2" href={`instagram.com/${youtube}`}>
+                    (<a className="text-white p-2" href={youtube} target="_blank">
                       <i className="fab fa-instagram fa-2x"></i>
                       </a>) }
                   </p>

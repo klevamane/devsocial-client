@@ -11,6 +11,7 @@ import ProfileGithub from './ProfileGithub';
 
 // Actions
 import { getProfileByHandle } from '../../../../actions/profileActions';
+import ProfileBioSkills from './ProfileBioSkills';
 
 class SingleProfile extends Component {
   constructor() {
@@ -63,6 +64,8 @@ class SingleProfile extends Component {
           <DeveloperCard profileData={profile} />
           <ProfileCredentials />
           <ProfileGithub />
+          <ProfileBioSkills profileData={profile} />
+          
 
         </div>
       )
