@@ -13,8 +13,8 @@ import { addProfileExperience } from '../../../actions/profileActions';
 
 class Experience extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       title: '',

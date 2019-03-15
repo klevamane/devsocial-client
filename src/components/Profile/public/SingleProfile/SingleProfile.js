@@ -62,10 +62,10 @@ class SingleProfile extends Component {
             <div className="col-md-6"></div>
           </div>
           <DeveloperCard profileData={profile} />
-          <ProfileCredentials />
-          <ProfileGithub />
-          <ProfileBioSkills profileData={profile} />
           
+          <ProfileBioSkills profileData={profile} />
+          <ProfileCredentials profileData={profile} />
+         {profile.githubusername ? <ProfileGithub githubusername={profile.githubusername} /> : ''}           
 
         </div>
       )

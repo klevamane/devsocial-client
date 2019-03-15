@@ -13,8 +13,8 @@ import { addProfileEducation } from '../../../actions/profileActions';
 
 class Education extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       school: '',

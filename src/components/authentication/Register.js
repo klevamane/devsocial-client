@@ -12,8 +12,8 @@ import TextBoxGroup from '../formcontrol/TextBox';
 
 class Register extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             firstname: '',
             lastname: '',

@@ -13,7 +13,7 @@ export const getCurrentUserProfile = () => dispatch => {
     dispatch(setProfileLoading());
     
     axios
-        .get('api/v1/profile')
+        .get('localhost:5000/api/v1/profile')
         .then(res => dispatch({
             type: GET_PROFILE,
             payload: res.data

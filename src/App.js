@@ -10,7 +10,6 @@ import Footer from './components/layouts/Footer';
 import Landing from './components/layouts/Landing';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
-import Profile from './components/dashboard/Dashboard';
 import CreateProfile from './components/Profile/CreateProfile';
 import EditProfile from './components/Profile/EditProfile';
 import Experience from './components/Profile/experience/Experience';

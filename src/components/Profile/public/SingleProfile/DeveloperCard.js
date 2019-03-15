@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+// Custom function
 import { isEmpty_ } from '../../../../helpers/helpers';
 
 const DeveloperCard = ({profileData}) => {
@@ -22,30 +25,30 @@ const DeveloperCard = ({profileData}) => {
                   {isEmpty_(profileData.location) ? null : (<p> {profileData.location} </p>)}
                   <p>
                     { isEmpty_(profileData.website) ? null : 
-                    (<a className="text-white p-2" href={profileData.website} target="_blank">
+                    (<a className="text-white p-2" href={profileData.website} target="_blank" rel="noopener noreferrer">
                       <i className="fas fa-globe fa-2x"></i>
                     </a>)}
 
                     { isEmpty_(twitter) ? null : 
-                    ( <a className="text-white p-2" href={twitter} target="_blank">
+                    ( <a className="text-white p-2" href={twitter} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-twitter fa-2x"></i>
                       </a>) }
 
                     { isEmpty_(facebook) ? null : 
-                    (<a className="text-white p-2" href={facebook} target="_blank">
+                    (<a className="text-white p-2" href={facebook} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-facebook fa-2x"></i>
                       </a>) }
                     { isEmpty_(linkedin) ? null :
-                    (<a className="text-white p-2" href={linkedin} target="_blank">
+                    (<a className="text-white p-2" href={linkedin} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin fa-2x"></i>
                       </a>) }
                       { isEmpty_(instagram) ? null : 
-                    (<a className="text-white p-2" href={instagram} target="_blank">
+                    (<a className="text-white p-2" href={instagram} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-instagram fa-2x"></i>
                       </a>) }
 
                       { isEmpty_(youtube) ? null : 
-                    (<a className="text-white p-2" href={youtube} target="_blank">
+                    (<a className="text-white p-2" href={youtube} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-instagram fa-2x"></i>
                       </a>) }
                   </p>
@@ -55,5 +58,9 @@ const DeveloperCard = ({profileData}) => {
           </div>
   )
 }
+
+DeveloperCard.propTypes = {
+    profileData: PropTypes.object.isRequired
+  }
 
 export default DeveloperCard;

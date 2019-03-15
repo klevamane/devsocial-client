@@ -14,8 +14,8 @@ import EducationTable from './EducationTable';
 
 
 class Dashboard extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             buttonloading: false,
@@ -56,7 +56,7 @@ class Dashboard extends Component {
         const { user } = this.props.auth;
 
         const btnLoader = (
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         );
 
         const { buttonloading } = this.state

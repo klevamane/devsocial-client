@@ -9,8 +9,8 @@ import { loginUser } from '../../actions/authActions';
 import TextBoxGroup from '../../components/formcontrol/TextBox';
 
 class Login extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             email: '',
             password: '',
