@@ -9,7 +9,7 @@ export const registerUser = (userData, history) => dispatch => {
     // the payload, we need to actually call dispatch
     // that's what redux thunk lets us do
     axios
-        .post('/api/v1/users/register', userData)
+        .post('http://localhost:5000/api/v1/users/register', userData)
         .then(res => history.push('/login'))
         .catch(err => dispatch({      // redux thunk allows us to call dispacth
             type: GET_ERRORS,
@@ -28,7 +28,7 @@ export const setCurrentUser = (decodedData) => {
 
 export const loginUser = (userData) => dispatch => {
     axios
-    .post('/api/v1/users/login', userData)
+    .post('http://localhost:5000/api/v1/users/login', userData)
     .then(res => {
         const { token } = res.data
         // Set the token

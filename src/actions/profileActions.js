@@ -13,7 +13,7 @@ export const getCurrentUserProfile = () => dispatch => {
     dispatch(setProfileLoading());
     
     axios
-        .get('localhost:5000/api/v1/profile')
+        .get('http://localhost:5000/api/v1/profile')
         .then(res => dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -35,7 +35,7 @@ export const getCurrentUserProfile = () => dispatch => {
  */
 export const createNewProfile = (profileData, history) => dispatch => {
     axios
-        .post('/api/v1/profile', profileData)
+        .post('http://localhost:5000/api/v1/profile', profileData)
         .then(res => history.push('/dashboard'))
         .catch(err => dispatch({
             type: GET_ERRORS,
@@ -45,7 +45,7 @@ export const createNewProfile = (profileData, history) => dispatch => {
 
 export const  addProfileExperience = (profileExperienceData, history) => dispatch => {
     axios
-        .post('/api/v1/profile/experience', profileExperienceData)
+        .post('http://localhost:5000/api/v1/profile/experience', profileExperienceData)
         .then(res => history.push('/dashboard'))
         .catch(err => dispatch({
             type: GET_ERRORS,
@@ -55,7 +55,7 @@ export const  addProfileExperience = (profileExperienceData, history) => dispatc
 
 export const  deleteProfileExperience = (exp_id, history) => dispatch => {
     axios
-        .delete(`/api/v1/profile/experience/${exp_id}`)
+        .delete(`http://localhost:5000/api/v1/profile/experience/${exp_id}`)
         .then(res => dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -68,7 +68,7 @@ export const  deleteProfileExperience = (exp_id, history) => dispatch => {
 
 export const addProfileEducation = (profileEducationData, history) => dispatch => {
     axios
-        .post('/api/v1/profile/education', profileEducationData)
+        .post('http://localhost:5000/api/v1/profile/education', profileEducationData)
         .then(res => history.push('/dashboard'))
         .catch(err => dispatch({
             type: GET_ERRORS,
@@ -78,7 +78,7 @@ export const addProfileEducation = (profileEducationData, history) => dispatch =
 
 export const  deleteProfileEducation = (edu_id, history) => dispatch => {
     axios
-        .delete(`/api/v1/profile/experience/${edu_id}`)
+        .delete(`http://localhost:5000/api/v1/profile/experience/${edu_id}`)
         .then(res => dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -93,7 +93,7 @@ export const deleteAccount = () => dispatch => {
    
         dispatch(setProfileLoading());
         axios
-        .delete('/api/v1/profile')
+        .delete('http://localhost:5000/api/v1/profile')
         .then(res => dispatch({
             type: SET_CURRENT_USER, // setting the current user to {} ensures that the user is empty which triggers rerouting to /login
             payload: {} 
@@ -109,7 +109,7 @@ export const deleteAccount = () => dispatch => {
 export const getAllProfiles = () => dispatch => {
     dispatch(setProfileLoading());
     axios
-        .get('/api/v1/profile/all')
+        .get('http://localhost:5000/api/v1/profile/all')
         .then(res =>  dispatch({
                 type: GET_PROFILES,
                 payload: res.data
@@ -127,7 +127,7 @@ export const getAllProfiles = () => dispatch => {
 export const getProfileByHandle = (handle) => dispatch => {
     dispatch(setProfileLoading());
     axios
-        .get(`/api/v1/profile/handle/${handle}`)
+        .get(`http://localhost:5000/api/v1/profile/handle/${handle}`)
         .then(res => dispatch ({
             type: GET_PROFILE,
             payload: res.data

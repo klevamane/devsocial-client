@@ -23,7 +23,8 @@ class ProfileGithub extends Component {
         &client_secret=${clientSecret}`)
             .then(res => res.json())
             .then(data => {
-                this.setState({ repos: data })
+                if(this.refs.myRef)
+                    this.setState({ repos: data })
             })
             .catch(err => console.log(err))
     }
@@ -60,7 +61,7 @@ class ProfileGithub extends Component {
       
       }
     return (
-      <div>
+      <div ref="myRef">
           <hr />
 
         <h1>Latest Github repositories</h1>

@@ -28,6 +28,7 @@ import { setCurrentUser, logout } from './actions/authActions';
 import store from './store';
 import Dashboard from './components/dashboard/Dashboard';
 import Education from './components/Profile/education/Education';
+import NotFound from './components/Notfound/NofFound';
 
 // check for token in local storage
 if (localStorage.jwtDevSocial) {
@@ -87,6 +88,7 @@ class App extends Component {
               </Switch>
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/profile/handle/:handle" component={SingleProfile} />
+              <Route exact path="/not-found" component={NotFound} />
             </div>
             <Footer />
           </div>
